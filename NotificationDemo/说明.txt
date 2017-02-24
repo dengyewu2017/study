@@ -1,2 +1,6 @@
-说明:
-   Notification案例,并运行xctest工具.
+
+git仓库命令: http://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
+
+说明: Notification案例,并运行xctest工具.
+
+test
