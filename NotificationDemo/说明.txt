@@ -1,0 +1,2 @@
+说明:
+   Notification案例,并运行xctest工具.
