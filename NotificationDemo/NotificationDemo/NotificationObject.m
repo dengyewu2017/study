@@ -24,7 +24,7 @@
 
 -(void)test{
 
-    NSLog(@" ...接收到通知...");
+    NSLog(@" ...NotificationObject类 test接收到通知...");
 }
 
 @end

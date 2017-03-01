@@ -27,12 +27,14 @@
     NetWorkSend *networksend = [[NetWorkSend alloc]init];   //创建通知对象
     
    [[NSNotificationCenter defaultCenter]postNotificationName:@"test" object:notification];
-   [[NSNotificationCenter defaultCenter]postNotificationName:@"SendRequest" object:networksend];
+      //发送通知
     
-}
-
-
-
+   [[NSNotificationCenter defaultCenter]postNotificationName:@"SendRequest" object:networksend]; //发送通知
+    
+    [networksend sendGetRequest]; //调用实例发送Get请求
+    [networksend sendPostRequest]; //调用实例发送post请求
+    [networksend DownLoadFile];    //下载文件
+ }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
