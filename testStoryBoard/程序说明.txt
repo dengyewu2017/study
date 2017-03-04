@@ -1,0 +1,31 @@
+ 程序说明:
+    程序启动的序列,请看上面的说明. 
+
+1. myViewController.m  是第一个启动的Controller
+2. testViewController.m    myViewController->跳转到testViewController
+3. tableViewController.m   myViewController->跳转到tableViewController
+
+传值:
+1. 通过拖动形式创建的UI界面(UIButton,UILabel,UITextField)映射到代码上是:
+    @property (retain, nonatomic) IBOutlet UITextField *userNameTextFiled;
+     -(IBAction)passValueButton:(id)sender;
+    ViewControl之间的跳转,只需要initWithNibName方法 加载ViewController就行.
+   SecondViewController *secondView = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:[NSBundle mainBundle]];
+
+2.如果不是拖动形式创建的UI界面(UIButton,UILabel,UITextField),映射到代码上是:
+    自定义: 
+     UILabel *xmlabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 100, 50, 35)];
+     [xmlabel setText:@"姓名:"];
+    xmlabel.backgroundColor=[UIColor grayColor];
+    [self.view addSubview:xmlabel];
+
+    跳转方法:presentModalViewController
+    返回方法:dissmissModalViewController
+  
+3.传值,通过变量,delegate代理方式.
+     
+iOS代码测试工具: 
+   1. xctest替代ocUnit;
+   2. infer代码扫描
+   3. ocMock工具
+   4. 

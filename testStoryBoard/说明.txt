@@ -1,0 +1,62 @@
+
+说明: 
+这个是一个开发入门的demo,主要为viewcontroller.m中手动添加控件,或者通过storyboard画板界面添加控件,执行过程如下:
+
+      1.main.m(设置AppDelegate);
+      2.AppDelegate中生命周期(didFinishLaunchingWithOptions中载入ViewController)
+      3.ViewController中自定义控件 (UIView,UIImageView,UILabel,UIButton)
+      4.
+
+具体如下主要步骤:
+ 1. 通过storyboard,创建一个首页,注意点:
+      1. info.plist中设置启动是Main.storyboard;
+      2. Interface Build中设置为 is Initial View Controller 
+      3. 在AppDelegate.m中didFinishLaunchingWithOptions增加 是rootViewController代码
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    
+    /* 1.加载Storyboard的名字 */
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    /* 2.加载storyboard里的控制器 */
+    UIViewController *vc =[storyboard instantiateInitialViewController];
+    
+    /* 设置根控制器 */
+    self.window.rootViewController = vc;
+    vc.view.backgroundColor = [UIColor grayColor];
+    
+    return YES;}
+
+2. 实现页面跳转
+    如果通过Main.storyboard 跳转到 Navigation Controller,则需要model模式,不是push模式
+      问题解决汇总: http://www.educity.cn/wenda/154305.html
+
+3. 入口
+
+  1.iOS函数入口: 
+      UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]))
+
+  2.Info.plist可以看做是一个配置文件,它属于IOS bundle概念里必备的文件
+  
+  3.AppDelegate.m作用
+      除了修改代理协议的类，main.m几乎没有什么可以改动的地方
+   
+iOS app启动的过程步骤: 
+    a.App通过UIApplicationMain进入, 
+    b.根据Info.plist里的信息执行初始化（如果有Storyboard则加载），
+    c.AppDelegate.m中 随后执行(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions中的内容 ，
+    d.执行完毕后，进行界面绘制viewcontroller，
+    e.最后启动完毕，进入事件等待循环
+
+    ViewController的作用:具体业务逻辑
+
+  AppDelegate过程:
+      http://blog.csdn.net/niejing654092427/article/details/45173549
+        1. 创建UIWindow,其它界面添加到这个窗口上,代码实现:
+            application didFinishLaunchingWithOptions函数中添加  
+            self.window=[UIWindow alloc]initWithFrame[[UIScreen mainScreen]bounds];
+        2. UIWindow上 添加 UIView,
+
+
+
